@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>index</title>
+		<title>index111</title>
 		<%--
 			날짜: 2025/07/31
 			이름: 윤종인
