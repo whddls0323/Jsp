@@ -8,20 +8,21 @@
 	String age = request.getParameter("age");
 	String addr = request.getParameter("addr");
 	
-	String host = "jdbc:oracle:thin:@localhost:1521:xe";
-	String user = "whddls0323";
+	String host = "jdbc:oracle:thin:@localhost:1521:xe"; 
+	String user = "whddls0323"; 
 	String pass = "1234";
 	
 	try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection conn = DriverManager.getConnection(host, user, pass);
+		Connection conn = DriverManager.getConnection(host,user,pass);
 		
-		String sql = "update user4 set gender=?,age=?,addr=? where name=?";
+		String sql = "insert into user5 values(?,?,?,?)";
 		PreparedStatement psmt = conn.prepareStatement(sql);
-		psmt.setString(1,gender);
-		psmt.setString(2,age);
-		psmt.setString(3,addr);
-		psmt.setString(4,name);
+		psmt.setString(1,name);
+		psmt.setString(2,gender);
+		psmt.setString(3,age);
+		psmt.setString(4,addr);
+		
 		psmt.executeUpdate();
 		
 		psmt.close();

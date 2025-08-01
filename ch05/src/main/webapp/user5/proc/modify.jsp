@@ -14,9 +14,9 @@
 	
 	try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection conn = DriverManager.getConnection(host, user, pass);
+		Connection conn = DriverManager.getConnection(host,user,pass);
 		
-		String sql = "update user4 set gender=?,age=?,addr=? where name=?";
+		String sql = "update user5 set gender=?,age=?,addr=? where name=?";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1,gender);
 		psmt.setString(2,age);
@@ -29,5 +29,6 @@
 	} catch(Exception e) {
 		e.printStackTrace();
 	}
+	
 	response.sendRedirect("../list.jsp");
 %>
