@@ -1,42 +1,42 @@
-package controller.user2;
+package controller.user5;
 
 import java.io.IOException;
 
-import dto.User2DTO;
+import dto.User5DTO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service.User2Service;
+import service.User5Service;
 
-@WebServlet("/user2/register.do")
+@WebServlet("/user5/register.do")
 public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private User2Service service = User2Service.getInstance();
+	private User5Service service = User5Service.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user2/register.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user5/register.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String user_id = req.getParameter("user_id");
 		String name = req.getParameter("name");
-		String hp = req.getParameter("hp");
+		String gender = req.getParameter("gender");
 		String age = req.getParameter("age");
+		String addr = req.getParameter("addr");
 		
-		User2DTO dto = new User2DTO();
-		dto.setUser_id(user_id);
+		User5DTO dto = new User5DTO();
 		dto.setName(name);
-		dto.setHp(hp);
+		dto.setGender(gender);
 		dto.setAge(age);
+		dto.setAddr(addr);
 		
 		service.register(dto);
 		
-		resp.sendRedirect("/ch09/user2/list.do");
+		resp.sendRedirect("/ch09/user5/list.do");
 	}
 }
