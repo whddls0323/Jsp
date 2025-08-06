@@ -29,8 +29,8 @@
 				<td>${customer.address}</td>
 				<td>${customer.rdate}</td>
 				<td>					
-					<a href="">수정</a>					
-					<a href="">삭제</a>
+					<a href="/ch10/shop/customer/modify.do?cid=${customer.cid}">수정</a>					
+					<a href="/ch10/shop/customer/delete.do?cid=${customer.cid}">삭제</a>
 				</td>
 			</tr>
 			</c:forEach>

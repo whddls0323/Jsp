@@ -27,7 +27,7 @@
 			 -C:\Users\GGG\apache-tomcat-10.1.43\apache-tomcat-10.1.43\bin\startup.bat 실행
 			 -C:\Users\GGG\apache-tomcat-10.1.43\apache-tomcat-10.1.43\webapps 폴더에 배포파일(ch10.war) 업로드 후 Deploy 확인 후 브라우저 확인
 			
-			user shop계정의 customer,product 사용
+			shop계정의 customer,product 사용
 			college계정의 student,course 사용
 			bank계정의 account,customer사용
 			library계정의 member,book 사용

@@ -15,6 +15,7 @@ public class CustomerDAO extends DBHelper {
 	public static CustomerDAO getInstance() {
 		return INSTANCE;
 	}	
+	
 	private CustomerDAO() {}
 	
 	private final String DBCP = "jdbc/shop";
@@ -102,10 +103,39 @@ public class CustomerDAO extends DBHelper {
 	}
 	
 	public void updateCustomer(CustomerDTO dto) {
-		
+		try {
+			conn = getConnection(DBCP);
+			
+			String sql = "update customer set name=?,hp=?,address=?,rdate=? where cid=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getHp());
+			psmt.setString(3, dto.getAddress());
+			psmt.setString(4, dto.getRdate());
+			psmt.setString(5, dto.getCid());
+			
+			psmt.executeUpdate();
+			
+			closeAll();
+		} catch(Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
 	
 	public void deleteCustomer(String cid) {
-		
+		try {
+			conn = getConnection(DBCP);
+			
+			String sql = "delete from customer where cid=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, cid);
+			
+			psmt.executeUpdate();
+			
+			psmt.close();
+			conn.close();
+		} catch(Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
 }
