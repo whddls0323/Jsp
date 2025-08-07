@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>library::modify</title>
+		<title>account::modify</title>
 	</head>
 	<body>
 		<h3>account 수정</h3>

@@ -1,4 +1,4 @@
-package controller.shop.customer;
+package controller.library.member;
 
 import java.io.IOException;
 
@@ -7,19 +7,19 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service.shop.CustomerService;
+import service.library.MemberService;
 
-@WebServlet("/shop/customer/delete.do")
+@WebServlet("/library/member/delete.do")
 public class DeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CustomerService service = CustomerService.INSTANCE;
+	private MemberService service = MemberService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String cid = req.getParameter("cid");
-		service.delete(cid);
+		String member_id = req.getParameter("member_id");
+		service.delete(member_id);
 		
-		resp.sendRedirect("/ch10/shop/customer/list.do");
+		resp.sendRedirect("/ch10/library/member/list.do");
 	}
 	
 	@Override
