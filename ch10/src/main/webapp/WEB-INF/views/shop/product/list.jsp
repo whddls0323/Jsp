@@ -4,33 +4,33 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Shop/Customer::list</title>
+		<title>Shop/Product::list</title>
 	</head>
 	<body>
-		<h3>Shop/Customer 목록</h3>
+		<h3>Shop/Product 목록</h3>
 		
 		<a href="/ch10">처음으로</a>
-		<a href="/ch10/shop/customer/register.do">등록하기</a>
+		<a href="/ch10/shop/product/register.do">등록하기</a>
 		
 		<table border="1">
 			<tr>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>휴대폰</th>
-				<th>주소</th>
-				<th>등록일</th>
+				<th>제품번호</th>
+				<th>제품명</th>
+				<th>재고량</th>
+				<th>단가</th>
+				<th>제조업체</th>
 				<th>관리</th>
 			</tr>			
-			<c:forEach var="customer" items="${dtoList}">
+			<c:forEach var="product" items="${dtoList}">
 			<tr>
-				<td>${customer.cid}</td>
-				<td>${customer.name}</td>
-				<td>${customer.hp}</td>
-				<td>${customer.address}</td>
-				<td>${customer.rdate}</td>
+				<td>${product.pno}</td>
+				<td>${product.pname}</td>
+				<td>${product.stock}</td>
+				<td>${product.price}</td>
+				<td>${product.company}</td>
 				<td>					
-					<a href="">수정</a>					
-					<a href="">삭제</a>
+					<a href="/ch10/shop/product/modify.do?pno=${product.pno}">수정</a>					
+					<a href="/ch10/shop/product/delete.do?pno=${product.pno}">삭제</a>
 				</td>
 			</tr>
 			</c:forEach>

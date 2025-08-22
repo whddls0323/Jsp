@@ -41,7 +41,7 @@ public class CustomerDTO {
 	}
 	
 	public String getRdate() {
-		return rdate.substring(0,10);
+		return rdate.substring(0, 10);
 	}
 	
 	public void setRdate(String rdate) {

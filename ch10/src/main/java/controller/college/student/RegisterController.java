@@ -2,7 +2,7 @@ package controller.college.student;
 
 import java.io.IOException;
 
-import dto.shop.CustomerDTO;
+import dto.college.StudentDTO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.college.StudentService;
-import service.shop.CustomerService;
 
 @WebServlet("/college/student/register.do")
 public class RegisterController extends HttpServlet {
@@ -22,8 +21,6 @@ public class RegisterController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/college/student/register.jsp");
 		dispatcher.forward(req, resp);
 	}
@@ -32,21 +29,21 @@ public class RegisterController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String cid = req.getParameter("cid");
+		String stdNo = req.getParameter("stdNo");
 		String name = req.getParameter("name");
-		String hp = req.getParameter("hp");
-		String address = req.getParameter("address");
-		String rdate = req.getParameter("rdate");
+		String birth = req.getParameter("birth");
+		String major = req.getParameter("major");
+		String enr_date = req.getParameter("enr_date");
 		
-		CustomerDTO dto = new CustomerDTO();
-		dto.setCid(cid);
+		StudentDTO dto = new StudentDTO();
+		dto.setStdNo(stdNo);
 		dto.setName(name);
-		dto.setHp(hp);
-		dto.setAddress(address);		
-		dto.setRdate(rdate);
+		dto.setBirth(birth);
+		dto.setMajor(major);
+		dto.setEnr_date(enr_date);
 		
-		//service.register(dto);
+		service.register(dto);
 		
-		resp.sendRedirect("/ch10/shop/customer/list.do");	
+		resp.sendRedirect("/ch10/college/student/list.do");	
 	}	
 }

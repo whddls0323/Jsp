@@ -20,7 +20,20 @@
 				<th>전공</th>
 				<th>입학일</th>
 				<th>관리</th>
-			</tr>			
+			</tr>		
+			<c:forEach var="student" items="${dtoList}">	
+			<tr>
+				<td>${student.stdNo}</td>
+				<td>${student.name}</td>
+				<td>${student.birth}</td>
+				<td>${student.major}</td>
+				<td>${student.enr_date}</td>
+				<td>					
+					<a href="/ch10/college/student/modify.do?stdNo=${student.stdNo}">수정</a>					
+					<a href="/ch10/college/student/delete.do?stdNo=${student.stdNo}">삭제</a>
+				</td>
+			</tr>
+			</c:forEach>
 		</table>		
 	</body>
 </html>

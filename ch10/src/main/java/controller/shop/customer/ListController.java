@@ -1,4 +1,4 @@
-			package controller.shop.customer;
+package controller.shop.customer;
 
 import java.io.IOException;
 import java.util.List;
