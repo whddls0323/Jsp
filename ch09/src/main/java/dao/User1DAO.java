@@ -25,7 +25,9 @@ public class User1DAO {
 	private User1DAO() {};
 	
 	//기본 CRUD 메서드
-	public void insertUser1(User1DTO dto) {
+	public int insertUser1(User1DTO dto) {
+		int rowCount = 0;
+		
 		try {
 			Context ctx = (Context) new InitialContext().lookup("java:comp/env");
 			DataSource ds = (DataSource) ctx.lookup("jdbc/whddls0323");
@@ -39,7 +41,9 @@ public class User1DAO {
 			psmt.setString(3, dto.getHp());
 			psmt.setInt(4, dto.getAge());
 			
-			psmt.executeUpdate();
+			//insert 성공하면 1, 실패하면 0
+			rowCount = psmt.executeUpdate();
+			System.out.println("rowCount: " + rowCount);
 			
 			psmt.close();
 			conn.close();
@@ -47,6 +51,7 @@ public class User1DAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		return rowCount;
 	}
 	
 	public User1DTO selectUser1(String user_id) {
