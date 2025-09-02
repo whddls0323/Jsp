@@ -118,7 +118,8 @@ public class User1DAO {
 		return dtoList;
 	}
 	
-	public void updateUser1(User1DTO dto) {
+	public int updateUser1(User1DTO dto) {
+		int rowCount = 0;
 		try {
 			Context ctx = (Context) new InitialContext().lookup("java:comp/env");
 			DataSource ds = (DataSource) ctx.lookup("jdbc/whddls0323");
@@ -132,16 +133,19 @@ public class User1DAO {
 			psmt.setInt(3, dto.getAge());
 			psmt.setString(4, dto.getUser_id());
 			
-			psmt.executeUpdate();
+			rowCount = psmt.executeUpdate();
 			
 			psmt.close();
 			conn.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		return rowCount;
 	}
 	
-	public void deleteUser1(String user_id) {
+	public int deleteUser1(String user_id) {
+		int rowCount = 0;
+		
 		try {
 			Context ctx = (Context) new InitialContext().lookup("java:comp/env");
 			DataSource ds = (DataSource) ctx.lookup("jdbc/whddls0323");
@@ -152,12 +156,13 @@ public class User1DAO {
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setString(1, user_id);
 			
-			psmt.executeUpdate();
+			rowCount = psmt.executeUpdate();
 			
 			psmt.close();
 			conn.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		return rowCount;
 	}
 }
